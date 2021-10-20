@@ -1,0 +1,132 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 让页面高度占浏览器可视区域的高度 */
+    height: 100vh;
+    width: 100vw;
+    background-color: #393d49;
+}
+
+.container{
+    width: 1000px;
+    height: 500px;
+}
+
+.container ul{
+    position: relative;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* 让子元素平均分配宽度 */
+    justify-content: space-around;
+    /* 子元素沿辅轴终边对齐 */
+    align-items: flex-end;
+    /* background-color: #fff; */
+}
+
+/* 小图片 start */
+.container ul li{
+    width: 200px;
+    /* 鼠标移入变小手 */
+    cursor: pointer;
+}
+
+.container ul li img{
+    width: 100%;
+    /* 价格透明边框 让图片看起来有距离 */
+    border: 5px solid transparent;
+}
+/* 小图片 end */
+
+/* 大图片 start */
+.container ul .bigImg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
+    height: 400px;
+    /* 给大图片也加上一个透明的边框 */
+    border: 5px solid transparent;
+    background: url(./img_10/1.jpg) no-repeat;
+    /* 图片以宽度为最大铺满整个盒子 */
+    background-size: contain;
+    transition: all 0.5s;
+}
+/* 大图片 end */
+
+/* 移动框 start */
+.container ul .frame{
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 200px;
+    height: 80px;
+    border: 5px solid salmon;
+    /* 如果不加，hover在ul上的时候会闪烁 */
+    /* 闪烁的原因是：本来要hover到ul上才发生变化，但是因为frame盖住了ul，所以鼠标同时hover在frame上 */
+    /* 把hover到frame上的事件去掉就好了 */
+    pointer-events: none;
+    /* 加过渡 */
+    transition: all 0.5s;
+}
+/* 用伪元素做三角 */
+.container ul .frame::before{
+    content: '';
+    position: absolute;
+    left: calc(50% - 15px);
+    top: -19px;
+    width: 30px;
+    height: 15px;
+    background-color: salmon;
+    /* 每一节都是x： y：多少来看的 */
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+/* 移动框 end */
+.container ul li:nth-child(1):hover ~ .bigImg{
+    background-image: url(./img_10/1.jpg);
+}
+.container ul li:nth-child(1):hover ~ .frame{
+    display: block;
+    left: 0;
+}
+
+.container ul li:nth-child(2):hover ~ .bigImg{
+    background-image: url(./img_10/2.jpg);
+}
+.container ul li:nth-child(2):hover ~ .frame{
+    display: block;
+    left: 200px;
+}
+
+.container ul li:nth-child(3):hover ~ .bigImg{
+    background-image: url(./img_10/3.jpg);
+}
+.container ul li:nth-child(3):hover ~ .frame{
+    display: block;
+    left: 400px;
+}
+
+.container ul li:nth-child(4):hover ~ .bigImg{
+    background-image: url(./img_10/4.jpg);
+}
+.container ul li:nth-child(4):hover ~ .frame{
+    display: block;
+    left: 600px;
+}
+
+.container ul li:nth-child(5):hover ~ .bigImg{
+    background-image: url(./img_10/5.jpg);
+}
+.container ul li:nth-child(5):hover ~ .frame{
+    display: block;
+    left: 800px;
+}

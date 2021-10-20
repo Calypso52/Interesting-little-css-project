@@ -1,0 +1,44 @@
+{
+  "id": "2180243",
+  "name": "zyt",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "401017",
+      "name": "pinterest",
+      "font_class": "pinterest",
+      "unicode": "e7fe",
+      "unicode_decimal": 59390
+    },
+    {
+      "icon_id": "702594",
+      "name": "google",
+      "font_class": "google",
+      "unicode": "e8a0",
+      "unicode_decimal": 59552
+    },
+    {
+      "icon_id": "929294",
+      "name": "facebook",
+      "font_class": "facebook",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "7239785",
+      "name": "instagram",
+      "font_class": "instagram",
+      "unicode": "e736",
+      "unicode_decimal": 59190
+    },
+    {
+      "icon_id": "17447541",
+      "name": "推特 twitter",
+      "font_class": "14",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    }
+  ]
+}

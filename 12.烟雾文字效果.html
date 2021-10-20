@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烟雾文字效果</title>
+    <link rel="stylesheet" href="./12.烟雾文字效果.css">
+    <script>
+        window.onload = function () {
+            const text = document.querySelector('.text');
+            // 每一个文字都用span包起来
+            text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>")
+
+            const letters = document.querySelectorAll("span");
+            for(let i = 0; i < letters.length; i++){
+                letters[i].addEventListener('mouseover', function(){
+                    letters[i].classList.add('active')
+                })
+            }
+            const btn = document.getElementById('btn');
+            btn.onclick = function(){
+                for(let i = 0; i < letters.length; i++){
+                    letters[i].classList.remove('active')
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <section>
+        <p class="text">
+            Two households, both alike in dignity,
+            In fair Verona, where we lay our scene,
+            From ancient grudge break to new mutiny,
+            Where civil blood makes civil hands unclean.
+            From forth the fatal loins of these two foes
+            A pair of star-cross'd lovers take their life;
+            Whose misadventured piteous overthrows
+            Do with their death bury their parents' strife.
+            The fearful passage of their death-mark'd love,
+            And the continuance of their parents' rage,
+            Which, but their children's end, nought could remove,
+            Is now the two hours' traffic of our stage;
+            The which if you with patient ears attend,
+            What here shall miss, our toil shall strive to mend.
+        </p>
+        <button id="btn"></button>
+    </section>
+    
+</body>
+</html>

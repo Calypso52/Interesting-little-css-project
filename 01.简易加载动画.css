@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* 弹性布局 */
+    display: flex;
+    /* 让页面元素水平+垂直居中 */
+    justify-content: center;
+    align-items: center;
+    /* 让页面是中占浏览器总高 */
+    height: 100vh;
+    background-color: #222;
+}
+
+.loading{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* 隐藏他的下面三条边 */
+    border: 3px solid transparent;
+    /* 只显示上面那条边 */
+    border-top-color: #9370db;
+    animation: rotate 2s linear infinite;
+}
+
+.loading::before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    /* 这边也是一样 用伪元素做边框 */
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ba55d3;
+    animation: rotate 3s linear infinite;
+}
+
+.loading::after{
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    /* 这边也是一样 用伪元素做边框 */
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f0f;
+    animation: rotate 1.5s linear infinite;
+}
+
+/* 下面定义一下动画 */
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        /* 顺时针旋转360度 */
+        transform: rotate(360deg);
+    }
+}

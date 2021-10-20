@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    /* 弹性布局 让页面元素垂直-水平居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 让页面始终占据浏览器可视区域的高度总高 */
+    height: 100vh;
+    background-color: #eee;
+}
+
+.container{
+    /* 弹性布局 让元素能够水平排列  并且能让a这个行内元素设置宽度和高度*/
+    display: flex;
+    text-align: center;
+}
+
+.container .btn{
+    overflow: hidden;
+    /* 开启相对定位 */
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 10px;
+    background-color: #fff;
+    border-radius: 25px;
+    /* 盒子阴影 x偏移量 偏移量 模糊半径 扩散半径 */
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .1);
+}
+
+.container .iconfont{
+    display: block;
+    font-size: 38px;
+    transform: scale(0.8);
+    /* 行高 让这个字体图标垂直居中于盒子内 */
+    line-height: 90px;
+    /* 设置过渡效果 */
+    transition: all .4s cubic-bezier(.31,-0.1,.43,1.59);
+}
+
+.container .btn::before{
+    content: "";
+    position: absolute;
+    top: 90%;
+    left: -110%;
+    width: 120%;
+    height: 120%;
+    /* 顺时针旋转45度 */
+    transform: rotate(45deg);
+    transition: all .4s cubic-bezier(.31,-0.1,.43,1.59);
+}
+
+.container .btn .icon-facebook{
+    color: #3b5988;
+}
+
+.container .btn_facebook::before{
+    background-color: #3b5988;
+}
+
+.container .btn .icon-14{
+    color: #00aff0;
+}
+
+.container .btn_twitter::before{
+    background-color: #00aff0;
+}
+
+.container .btn .icon-google{
+    color: #dc4a38;
+}
+
+.container .btn_google::before{
+    background-color: #dc4a38;
+}
+
+.container .btn .icon-instagram{
+    color: #bf00ff;
+}
+
+.container .btn_instagram::before{
+    background-color: #bf00ff;
+}
+
+.container .btn .icon-pinterest{
+    color: #c00;
+}
+
+.container .btn_pinterest::before{
+    background-color: #c00;
+}
+
+.container .btn:hover::before{
+    top: -10%;
+    left: -10%;
+}
+
+.container .btn:hover .iconfont{
+    color: #fff;
+    transform: scale(1);
+}

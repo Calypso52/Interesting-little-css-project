@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    /* 弹性布局 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 让页面占据浏览器可视区域的宽和高 */
+    width: 100vw;
+    height: 100vh;
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #c2e9f6;
+    z-index: -1;
+    /* ease-in 时从慢速开始加速到结束 */
+    transition: all .25s ease-in;
+}
+
+input{
+    /* 隐藏复选框 */
+    display: none;
+}
+
+/* label和input连在一体的 */
+label{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border-radius: 100px;
+    border: 5px solid #72cce3;
+    background-color: #96dcee;
+    transition: all 0.35s ease-in;
+    cursor: pointer;
+}
+
+/* 圆球 */
+label::before{
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    border: 5px solid #f5eb71;
+    background-color: #fffaa8;
+    transition: all 0.35s ease-in;
+    animation: switch-reverse 0.35s forwards;
+}
+
+/* 月光凹陷效果 */
+label::after{
+    content: '';
+    position: absolute;
+    left: 143px;
+    top: 23px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: -13px 0 0 2px #e8e8ea, -24px 14px 0 -2px #e8e8ea;
+    transition: all 0.25s ease-in;
+    /* 不透明度为0 就是隐藏了 */
+    opacity: 0;
+}
+
+/* 光线中间 */
+label span{
+    position: relative;
+    top: 45px;
+    left: 135px;
+    display: block;
+    width: 10px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 0.15s ease-in;
+}
+
+/* 光线前后 */
+label span::before,
+label span::after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 0.15s ease-in;
+}
+
+label span::before{
+    top: -5px;
+    left: -20px;
+}
+
+label span::after{
+    top: 5px;
+    left: -10px;
+}
+
+/* input和他的label被选中的时候背景变化效果 */
+/* ~ 的意思是对其后的所有兄弟元素都适用 ， + 的意思仅对其后的第一个兄弟元素适用 */
+input:checked ~ .background{
+    background-color: #808fc7;
+}
+
+/* 点击后label要变色  label是大框框 */
+input:checked + label{
+    border-color: #5d6baa;
+    background-color: #6b7abb;
+}
+
+/* 点击后圆球变白 */
+input:checked + label::before{
+    border-color: #e8e8ea;
+    background-color: #fff;
+    /* 这里插入动画 */
+    /* 动画 名称 时长 forward就是动画完成后定在100%时的状态 */
+    animation: switch 0.35s forwards ;
+}
+
+/* 点击后星光变位置 */
+input:checked + label span{
+    width: 5px;
+    left: 60px;
+    border-radius: 50%;
+}
+
+/* 点击后原来的光束变成星光 */
+input:checked + label span::before{
+    width: 5px;
+    height: 5px;
+    top: -25px;
+    border-radius: 50%;
+}
+
+input:checked + label span::after{
+    width: 5px;
+    height: 5px;
+    top: 20px;
+    left: -30px;
+    border-radius: 50%;
+}
+
+/* 点击后月球凹陷出现  但是延迟一会再出现 */
+input:checked + label::after{
+    opacity: 1;
+    transition-delay: 0.25s;
+}
+
+@keyframes switch{
+    0%{
+        left: 4px;
+    }
+    60%{
+        left: 4px;
+        width: 112px;
+    }
+    100%{
+        left: 104px;
+    }
+}
+
+/* 顺便定义取消复选框选中状态的动画 */
+@keyframes switch-reverse{
+    0%{
+        left: 104px;
+    }
+    60%{
+        left: 72px;
+        width: 112px;
+    }
+    100%{
+        left: 4px;
+    }
+}
